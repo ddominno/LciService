@@ -1,0 +1,23 @@
+﻿{
+
+  "InspectedBy": "unit.test",
+
+  "BinAirTemp": "31.8",
+
+  "BinHumidity": "37.6",
+
+  "TempMonitorId": "",
+
+  "SubstrateMoisturePct": "34.6",
+
+  "SubstrateEc": "4.21",
+
+  "SubstratePh": "6.07",
+
+  "BotrytisLevel": "1",
+
+  "BinId": "8543871957",
+
+  "EventDate": "2017-06-30T15:21:13"
+
+}

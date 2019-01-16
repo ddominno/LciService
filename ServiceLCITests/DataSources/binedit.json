@@ -1,0 +1,38 @@
+﻿{
+  "BinId": "2018080256",
+  "UnitQty": 15,
+  "Uom": "Pot",
+  "UnitSize": "Standard",
+  "TermLength": "Short",
+  "EventDate": "2017-06-29",
+  "EditedBy": "danielle.positeri",
+
+  "Origin": {
+    "ApprovedForStorageBy": "postman.test",
+    "PackDate": "2017-06-29",
+    "GrowerNbr": "0991011",
+    "RanchNbr": "0007477",
+    "Block": {
+      "BlockDesignator": "A1",
+      "Variety": "V1C",
+      "FieldType": "conventional",
+      "BerryType": "RASP",
+      "Treatment": "mowdown"
+    }
+  },
+  "Destination": {
+    "ExpectedReleaseDate": "1900-01-01",
+    "GrowerPickupDate": "1900-01-01",
+    "GrowerNbr": null,
+    "RanchNbr": null,
+    "Block": null
+  },
+  "WarehouseLocation": {
+    "WarehouseNbr": "0001",
+    "Sublocation": "PLANTS"
+  },
+  "AdjustReason": {
+    "Code": "TestCode",
+    "Descript": "This is a test Adjust Reason Code"
+  }
+}

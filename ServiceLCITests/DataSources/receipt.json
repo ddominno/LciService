@@ -1,0 +1,39 @@
+﻿{
+  "EventType": "ReceiptCreate",
+  "WarehouseNbr": "0001",
+  "Sublocation": "TEW",
+  "ReceivingTagNbr": "2918102407",
+  "ReceiptDate": "2018-09-04T16:51:15.754Z",
+  "CoolingEntryDate": "2018-09-04T16:51:15.754Z",
+  "ExpectedReleaseDate": "2018-10-31T16:51:15.754Z",
+  "UnitQty": "25",
+  "ReceivedBy": "anypoint.test",
+  "RanchNbr": "0009874",
+  "Block": "A1",
+  "Inspection": {
+    "EventType": "Inspection",
+    "InspectedBy": "aruna.muthiah",
+    "BinAirTemp": "30",
+    "BinHumidity": "",
+    "TempMonitorId": "3000",
+    "SubstrateMoisturePct": "1",
+    "SubstrateEc": "1",
+    "SubstratePh": "",
+    "BotrytisLevel": "",
+    "BinId": "2018102408",
+    "EventDate": "2018-09-04T15:46:00"
+  },
+  "BinId": "2018102496",
+  "BinIdList": [
+    {
+      "BinId": "2018102497",
+      "UnitQty": 100,
+      "ExpectedReleaseDate": "2018-09-20",
+      "substrateEc": "5",
+      "substrateMoisturePct": "5",
+      "binAirTemp": "20",
+      "tempMonitorId": "2000"
+    }
+  ],
+  "EventDate": "2018-08-16T16:51:15.754Z"
+}

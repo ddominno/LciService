@@ -1,0 +1,11 @@
+﻿{
+  "BinId": "9635724666",
+  "EventDate": "2017-06-30T12:53:29",
+  "NewQty": 31,
+  "ChangedBy": "unit.test",
+  "AdjustReason": {
+    "Code": "TestCode",
+    "Descript": "This is a test Adjust Reason Code"
+  },
+  "IncidentDescript": "Here is an incident message"
+}

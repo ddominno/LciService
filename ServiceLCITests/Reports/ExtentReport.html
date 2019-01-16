@@ -1,0 +1,1831 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset='utf-8' />
+    <meta name='description' content='' />
+    <meta name='robots' content='noodp, noydir' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://cdn.rawgit.com/anshooarora/extentreports-csharp/3b6cc04fd241b9782606e57fc5e84f0e42172c08/dist/css/extent.css' type='text/css' rel='stylesheet' />
+
+    <title>ExtentReports</title>
+
+</head>
+    
+
+
+	<body class='extent standard default hide-overflow bdd'>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+		<nav>
+    <div class="nav-wrapper">
+        <a href="http://extentreports.relevantcodes.com" class="brand-logo blue darken-3">Extent</a>
+
+        <!-- slideout menu -->
+        <ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+            <li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+                        <li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+        </ul>
+
+        <!-- report name -->
+        <span class='report-name'>ExtentReports</span>
+
+        <!-- report headline -->
+        <span class='report-headline'></span>
+
+        <!-- nav-right -->
+        <ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+
+            <a>
+                <span class='suite-start-time label blue darken-3'>1/8/2019 5:08:31 PM Pacific Standard Time</span>
+            </a>
+            <a>
+                <span class="label blue darken-3">3.1.0</span>
+            </a>
+        </ul>
+    </div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+            
+<div id='test-view' class='view'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- test toggle -->
+            <div class='chip transparent'>
+                <a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+                    <i class='material-icons'>warning</i> Status
+                </a>
+                <ul id='tests-toggle' class='dropdown-content'>
+                    <li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+                    <li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+                    <li status='error'><a href='#!'>Error <i class='material-icons red-text lighten-2'>error</i></a></li>
+                    <li status='warning'><a href='#!'>Warning <i class='material-icons orange-text'>warning</i></a></li>
+                    <li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+                    <li class='divider'></li>
+                    <li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+                </ul>
+            </div>
+            <!-- test toggle -->
+
+            <!-- category toggle -->
+            <!-- category toggle -->
+
+            <!-- clear filters -->
+            <div class='chip transparent hide'>
+                <a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+                    <i class='material-icons'>close</i> Clear
+                </a>
+            </div>
+            <!-- clear filters -->
+
+            <!-- enable dashboard -->
+
+            <div id='toggle-test-view-charts' class='chip transparent'>
+                    <a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+                        <i class='material-icons'>track_changes</i> Dashboard
+                    </a>
+            </div>
+            <!-- enable dashboard -->
+
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+
+
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m4 l4 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Features</div>
+                <div class='chart-box'>
+                    <canvas id='parent-analysis' width='100' height='80'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span><span class='strong'>25</span> test(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong'>8</span> test(s) failed, <span class='strong'>0</span> others
+                </div>
+            </div>
+        </div>
+
+            <div class='col s12 m4 l4 np-h'>
+                <div class='card-panel nm-v'>
+                    <div class='left panel-name'>Scenarios</div>
+                    <div class='chart-box'>
+                        <canvas id='child-analysis' width='100' height='80'></canvas>
+                    </div>
+                    <div class='block text-small'>
+                        <span><span class='strong'>25</span> step(s) passed</span>
+                    </div>
+                    <div class='block text-small'>
+                        <span class='strong'>9</span> step(s) failed, <span class='strong'>0</span> others
+                    </div>
+                </div>
+            </div>
+
+            <div class='col s12 m4 l4 np-h'>
+                <div class='card-panel nm-v'>
+                    <div class='left panel-name'>Steps</div>
+                    <div class='chart-box'>
+                        <canvas id='grandchild-analysis' width='100' height='80'></canvas>
+                    </div>
+                    <div class='block text-small'>
+                        <span><span class='strong'>184</span> step(s) passed</span>
+                    </div>
+                    <div class='block text-small'>
+                        <span class='strong'>9</span> step(s) failed, <span class='strong'>0</span> others
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Tests</h5>
+
+            <ul id='test-collection' class='test-collection'>
+
+
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='1'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinEditEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:31 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='2' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:02.3278652</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Edit a bin that does not exist in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='3' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that does not exist in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='4' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='5' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinEditEvent
+                                                                                                                                                                    </li>
+                                                    <li test-id='6' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binedit'
+                                                                                                                                                                    </li>
+                                                    <li test-id='7' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='8' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='9' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'You cannot edit a bin that is not in inventory'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='10'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinSearchByFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:33 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='11' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.3792029</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin list filtered by GrowerNbr
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='12' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='13' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass with GrowerNbr filter
+                                                                                                                                                                    </li>
+                                                    <li test-id='14' class='node when fail' status='when fail'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                            <div class='pre'>Object reference not set to an instance of an object.</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='15'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostReceipt</span>
+                            <span class='test-time'>1/8/2019 5:08:34 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='16' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:01.3509192</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Post Receipt where Bin Id already exist
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='17' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/receipt'
+                                                                                                                                                                    </li>
+                                                    <li test-id='18' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the bin appears in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='19' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for an existing bin
+                                                                                                                                                                    </li>
+                                                    <li test-id='20' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='21' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='22' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'BadRequest'
+                                                                                                                                                                    </li>
+                                                    <li test-id='23' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'already Exists'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='24'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinRejectEventByEventFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:35 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='25' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.4289788</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get bin rejects filtered by GrowerNbr
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='26' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='27' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a grower Id existing
+                                                                                                                                                                    </li>
+                                                    <li test-id='28' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='29' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='30' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        a response with valid event type
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='31'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinEditEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:35 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='32' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.7929576</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Edit a bin that is in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='33' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the bin appears in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='34' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='35' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinEditEvent
+                                                                                                                                                                    </li>
+                                                    <li test-id='36' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binedit'
+                                                                                                                                                                    </li>
+                                                    <li test-id='37' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='38' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='39' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'Request processed successfully'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='40'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinRejectEventByEventFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:36 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='41' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.2649869</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get bin rejects filtered by GrowerNbr that does not exist
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='42' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='43' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a grower Id not existing
+                                                                                                                                                                    </li>
+                                                    <li test-id='44' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='45' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='46' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response content is empty
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='47'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinRemoveInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:37 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='48' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:01.1560436</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Remove a record with an EventType not Inspection
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='49' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the event Id of a 'Issuance'
+                                                                                                                                                                    </li>
+                                                    <li test-id='50' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id related to the inspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='51' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='52' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinRemoveInspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='53' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspectionremove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='54' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='55' class='node then fail' status='then fail'>
+                                                        <b>Then</b>
+                                                        Status Code is 'BadRequest'
+                                                                                                                                                                            <div class='pre'>Assert.Fail failed. Status code is InternalServerError
+{
+  "status": "500",
+  "Message": "\"You called the function '++' with these arguments: \n  1: String (\"SELECT * from dbo.BinEvent where Id='\")\n  2: Null (null)\n\nBut it expects one of these combinations:\n  (Array, Array)\n  (Date, Time)\n  (Date, LocalTime)\n  (Date, TimeZone)\n  (LocalDateTime, TimeZone)\n  (LocalTime, Date)\n  (LocalTime, TimeZone)\n  (Object, Object)\n  (String, String)\n  (Time, Date)\n  (TimeZone, LocalDateTime)\n  (TimeZone, Date)\n  (TimeZone, LocalTime)\n\n1| 'SELECT * from dbo.BinEvent where Id=\\''++ vars.incomingPayloadBody.Id ++'\\''\n   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTrace:\n  at ++ (line: 1, column: 1)\n  at ++ (line: 1, column: 41)\n  at main (line: 1, column: 72)\" evaluating expression: \"'SELECT * from dbo.BinEvent where Id=\\''++ vars.incomingPayloadBody.Id ++'\\''\"."
+}</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='56'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:38 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='57' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.7729502</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to Get incidents where bin Id is not in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='58' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='59' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id not existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='60' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='61' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='62' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response content is empty
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='63'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinIssuanceEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:38 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='64' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.8649495</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Issue a bin Id
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='65' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/issuance'
+                                                                                                                                                                    </li>
+                                                    <li test-id='66' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='67' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\POSTBinIssuanceEvent.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='68' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='69' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='70' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": " Request processed successfully"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='71' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='72'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinEditEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:39 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='73' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.4689778</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Edit a bin that exists in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='74' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binedit'
+                                                                                                                                                                    </li>
+                                                    <li test-id='75' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='76' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\binedit.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='77' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='78' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='79' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "You cannot edit a bin that is not in inventory! Cannot find BinId 2018080256"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='80' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='81'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinSearchByFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:40 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='82' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.1029948</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin list filtered by RanchNbr
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='83' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='84' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass with RanchNbr filter
+                                                                                                                                                                    </li>
+                                                    <li test-id='85' class='node when fail' status='when fail'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                            <div class='pre'>Object reference not set to an instance of an object.</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='86'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostReceipt</span>
+                            <span class='test-time'>1/8/2019 5:08:40 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='87' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:01.2369278</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Post Receipt where Bin Id does not already exist 2
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='88' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/receipt'
+                                                                                                                                                                    </li>
+                                                    <li test-id='89' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='90' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for a new bin
+                                                                                                                                                                    </li>
+                                                    <li test-id='91' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='92' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='93' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response reads Processed Successfully
+                                                                                                                                                                    </li>
+                                                    <li test-id='94' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the bin appears in inventory
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='95'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinIssuanceEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:41 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='96' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.2958622</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Issue a bin Id that does not exist in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='97' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that does not exist in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='98' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='99' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinIssuance
+                                                                                                                                                                    </li>
+                                                    <li test-id='100' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/issuance'
+                                                                                                                                                                    </li>
+                                                    <li test-id='101' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='102' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'BadRequest'
+                                                                                                                                                                    </li>
+                                                    <li test-id='103' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'does not exist in inventory. You cannot issue it'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='104'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinRemoveInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:41 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='105' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.2230718</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Remove an inspection with the wrong Bin Id
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='106' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the event Id of an inspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='107' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id unrelated to the inspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='108' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='109' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinRemoveInspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='110' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspectionremove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='111' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='112' class='node then fail' status='then fail'>
+                                                        <b>Then</b>
+                                                        Status Code is 'BadRequest'
+                                                                                                                                                                            <div class='pre'>Assert.Fail failed. Status code is InternalServerError
+{
+  "status": "500",
+  "Message": "Required parameter 'value' was assigned with value '#[vars.incomingPayloadBody.BinId]' which resolved to null. Required parameters need to be assigned with non null values"
+}</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='113'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinIssuanceEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:42 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='114' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.1019928</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Issue a bin to a ranchNumber it did not originate from
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='115' class='node given fail' status='given fail'>
+                                                        <b>Given</b>
+                                                        a binId has been created
+                                                                                                                                                                            <div class='pre'>System.NullReferenceException: Object reference not set to an instance of an object.
+   at ServiceLCITests.StepDefinitions.APIStepDefinitions.WhenTheRequestIsExecuted() in C:\Users\david.dominno\Source\Repos\DriscTA\LciService\ServiceLCITests\StepDefinitions\APIStepDefinitions.cs:line 191
+   at ServiceLCITests.StepDefinitions.APIStepDefinitions.GivenABinIdHasBeenCreated() in C:\Users\david.dominno\Source\Repos\DriscTA\LciService\ServiceLCITests\StepDefinitions\APIStepDefinitions.cs:line 168
+   at lambda_method(Closure , IContextManager )
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='116'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:42 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='117' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.6499633</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            inspection where exist in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='118' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that already exists in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='119' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='120' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinInspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='121' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspection'
+                                                                                                                                                                    </li>
+                                                    <li test-id='122' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='123' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='124' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'Request processed successfully'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='125'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinIncident</span>
+                            <span class='test-time'>1/8/2019 5:08:43 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='126' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.3879775</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to Get incidents related to a bin in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='127' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='128' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='129' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='130' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='131' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        a response with valid bin id
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='132'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:43 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='133' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.4369701</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            inspection where bin does not exist in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='134' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that does not exist in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='135' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='136' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinInspection
+                                                                                                                                                                    </li>
+                                                    <li test-id='137' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspection'
+                                                                                                                                                                    </li>
+                                                    <li test-id='138' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='139' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='140' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'does not appear to be in inventory'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='141'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBin</span>
+                            <span class='test-time'>1/8/2019 5:08:43 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='142' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.7679566</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin Id that exists in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='143' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='144' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='145' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='146' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='147' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        a response with valid bin id
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='148'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:44 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='149' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.6390122</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to Get incidents related to a bin in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='150' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='151' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='152' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='153' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='154' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        a response with valid bin id
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='155'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostReceipt</span>
+                            <span class='test-time'>1/8/2019 5:08:45 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='156' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.8057761</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Post Receipt where Bin Id does not already exist
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='157' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/receipt'
+                                                                                                                                                                    </li>
+                                                    <li test-id='158' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='159' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\receipt.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='160' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='161' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='162' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "Request Processed Successfully"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='163' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='164'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostAdjustQuantityEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:46 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='165' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.2789895</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            adjust quantity where Bin Id not in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='166' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that does not exist in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='167' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='168' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for adjusting a bin
+                                                                                                                                                                    </li>
+                                                    <li test-id='169' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binadjustqty'
+                                                                                                                                                                    </li>
+                                                    <li test-id='170' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='171' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='172' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'does not appear to be in inventory'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='173'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinMoveEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:46 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='174' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.5679668</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Move a bin not in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='175' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        a bin Id that does not exist in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='176' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='177' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinMoveEvent
+                                                                                                                                                                    </li>
+                                                    <li test-id='178' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binmove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='179' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='180' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'BadRequest'
+                                                                                                                                                                    </li>
+                                                    <li test-id='181' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response property 'Message' contains 'does not appear to be in inventory'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='182'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBin</span>
+                            <span class='test-time'>1/8/2019 5:08:46 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='183' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.2969827</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin Id on inventory table but not in the DC
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='184' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='185' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id existing in Inventory and Current Location Type is GrowerField
+                                                                                                                                                                    </li>
+                                                    <li test-id='186' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='187' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'NotFound'
+                                                                                                                                                                    </li>
+                                                    <li test-id='188' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response contains 'BinId not found'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='189'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinIncident</span>
+                            <span class='test-time'>1/8/2019 5:08:47 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='190' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.4740952</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to Get incidents where bin Id is not in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='191' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='192' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id not existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='193' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='194' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='195' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response content is empty
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='196'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinRemoveInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:47 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='197' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.2649004</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            POST Bin Remove Inspection
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='198' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspectionremove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='199' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='200' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\bininspectionremove.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='201' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='202' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='203' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "You cannot remove events of type PreReceiptCreate"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='204' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='205'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBin</span>
+                            <span class='test-time'>1/8/2019 5:08:47 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='206' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.4388088</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin Id that does not exist in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='207' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='208' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass a Bin Id not existing in Inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='209' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='210' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        I should get status code 'NotFound'
+                                                                                                                                                                    </li>
+                                                    <li test-id='211' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        the response contains 'BinId not found'
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='212'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinSearchByFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:48 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='213' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.0769946</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin list filtered by BerryType
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='214' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='215' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass with BerryType filter
+                                                                                                                                                                    </li>
+                                                    <li test-id='216' class='node when fail' status='when fail'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                            <div class='pre'>Object reference not set to an instance of an object.</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='217'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostAdjustQuantityEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:48 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='218' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.5840086</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            adjust Quantity of a bin in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='219' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binadjustqty'
+                                                                                                                                                                    </li>
+                                                    <li test-id='220' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='221' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\AdjustQuantity.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='222' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='223' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='224' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "BinId 7859632148 has not been Received"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='225' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='226'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_GetBinSearchByFilter</span>
+                            <span class='test-time'>1/8/2019 5:08:49 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='227' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.0839953</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get a bin list filtered by WarehouseNbr
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='228' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='229' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass with WarehouseNbr filter
+                                                                                                                                                                    </li>
+                                                    <li test-id='230' class='node when fail' status='when fail'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                            <div class='pre'>Object reference not set to an instance of an object.</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+                                    <div class='scenario node' test-id='231' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.0858171</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Test to get bin list no filter
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='232' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        I have a Bin request
+                                                                                                                                                                    </li>
+                                                    <li test-id='233' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        I pass no filter
+                                                                                                                                                                    </li>
+                                                    <li test-id='234' class='node when fail' status='when fail'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                            <div class='pre'>Object reference not set to an instance of an object.</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf fail' status='fail' bdd='bdd' test-id='235'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinMoveEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:49 PM</span>
+                            <span class='test-status right fail'>Fail</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='236' status='fail'>
+                                        <span class='scenario-duration right label'>00:00:00.1489670</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            Move a bin that exists in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='237' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the bin appears in inventory
+                                                                                                                                                                    </li>
+                                                    <li test-id='238' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='239' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        the Payload is set for PostBinMoveEvent
+                                                                                                                                                                    </li>
+                                                    <li test-id='240' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binmove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='241' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        the Request is executed
+                                                                                                                                                                    </li>
+                                                    <li test-id='242' class='node then fail' status='then fail'>
+                                                        <b>Then</b>
+                                                        Status Code is 'OK'
+                                                                                                                                                                            <div class='pre'>Assert.Fail failed. Status code is Unauthorized
+{
+  "error": "java.io.IOException: Remotely closed"
+}</div>
+                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='243'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinInspection</span>
+                            <span class='test-time'>1/8/2019 5:08:49 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='244' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.6169955</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            inspection where bin exists in inventory
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='245' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/bininspection'
+                                                                                                                                                                    </li>
+                                                    <li test-id='246' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='247' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\bininspection.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='248' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='249' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'Created'
+                                                                                                                                                                    </li>
+                                                    <li test-id='250' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "Request processed successfully"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='251' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+                    <li class='test displayed active has-leaf pass' status='pass' bdd='bdd' test-id='252'>
+                        <div class='test-heading'>
+                            <span class='test-name'>LCI_PostBinMoveEvent</span>
+                            <span class='test-time'>1/8/2019 5:08:49 PM</span>
+                            <span class='test-status right pass'>Pass</span>
+                        </div>
+                        <div class='test-content hide'>
+                                    <div class='scenario node' test-id='253' status='pass'>
+                                        <span class='scenario-duration right label'>00:00:00.6998759</span>
+                                        <div class='scenario-desc'>
+                                            <b>Scenario</b>
+                                            POST Bin Move Event
+
+                                            
+                                        </div>
+                                            <ul class='steps'>
+                                                    <li test-id='254' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        URL for API is 'dlcis/api/v1/lcis/trans/binmove'
+                                                                                                                                                                    </li>
+                                                    <li test-id='255' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Create POST Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='256' class='node given pass' status='given pass'>
+                                                        <b>Given</b>
+                                                        Payload is '..\..\DataSources\binmove.json'
+                                                                                                                                                                    </li>
+                                                    <li test-id='257' class='node when pass' status='when pass'>
+                                                        <b>When</b>
+                                                        Execute the Request
+                                                                                                                                                                    </li>
+                                                    <li test-id='258' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Status Code is 'OK'
+                                                                                                                                                                    </li>
+                                                    <li test-id='259' class='node and pass' status='and pass'>
+                                                        <b>And</b>
+                                                        {
+  "Message": "Request Processed Successfully"
+}
+                                                                                                                                                                    </li>
+                                                    <li test-id='260' class='node then pass' status='then pass'>
+                                                        <b>Then</b>
+                                                        Response Content
+                                                                                                                                                                    </li>
+                                            </ul>
+                                    </div>
+
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <!-- subview left -->
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='test-name'></h5>
+
+        </div>
+    </div>
+    <!-- subview right -->
+
+</div>
+<!-- test view -->
+            <!-- category view -->
+            
+
+
+    <div id='exception-view' class='view hide'>
+
+        <section id='controls'>
+            <div class='controls grey lighten-4'>
+                <!-- search -->
+                <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                    <a href="#" class='search-div'>
+                        <i class='material-icons'>search</i> Search
+                    </a>
+
+                    <div class='input-field left hide'>
+                        <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                    </div>
+                </div>
+                <!-- search -->
+            </div>
+        </section>
+
+        <div class='subview-left left'>
+
+            <div class='view-summary'>
+                <h5>Exceptions</h5>
+                <ul id='exception-collection' class='exception-collection'>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class='subview-right left'>
+            <div class='view-summary'>
+                <h5 class='exception-name'></h5>
+            </div>
+        </div>
+    </div>
+<!-- exception view -->
+            
+
+
+<div id='dashboard-view' class='view hide'>
+    <div class='card-panel transparent np-v'>
+        <h5>Dashboard</h5>
+
+        <div class='row'>
+            <div class='col s2'>
+                <div class='card-panel r'>
+ <span>Features</span>                     <div class='panel-lead'>33</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+ <span>Scenarios</span>                     <div class='panel-lead'>34</div>
+                </div>
+            </div>
+                <div class='col s2'>
+                    <div class='card-panel r'>
+                        Steps
+                        <div class='panel-lead'>193</div>
+                    </div>
+                </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    Start
+                    <div class='panel-lead'>1/8/2019 5:08:31 PM</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    End
+                    <div class='panel-lead'>1/8/2019 5:08:55 PM</div>
+                </div>
+            </div>
+            <div class='col s2'>
+                <div class='card-panel r'>
+                    Time Taken
+                    <div class='panel-lead'>00:00:24.5827089</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- dashboard view -->
+            
+
+
+<!-- exception view -->
+
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+			    passParent: 25,
+			    failParent: 8,
+			    fatalParent: 0,
+			    errorParent: 0,
+			    warningParent: 0,
+			    skipParent: 0,
+				
+			    passChild: 25,
+			    failChild: 9,
+			    fatalChild: 0,
+			    errorChild: 0,
+			    warningChild: 0,
+			    skipChild: 0,
+			    infoChild: 0,
+				
+			    passGrandChild: 184,
+			    failGrandChild: 9,
+			    fatalGrandChild: 0,
+			    errorGrandChild: 0,
+			    warningGrandChild: 0,
+			    skipGrandChild: 0,
+			    infoGrandChild: 0
+			};
+		</script>
+
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports-csharp/e468054d67d93c2fd9c8f0f60e31a7ea09fa3bf6/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+			</body>
+	
+</html>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LCIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LCI.dbo.BinEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BinEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BinId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventType" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventDateTime" Type="datetime" />
+          <Property Name="ValidationState" Type="nvarchar" MaxLength="25" />
+          <Property Name="EventJson" Type="nvarchar(max)" />
+          <Property Name="ValidationStateJson" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LCI.dbo.BinInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BinInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BinId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BinId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitQty" Type="int" />
+          <Property Name="Uom" Type="nvarchar" MaxLength="15" />
+          <Property Name="UnitSize" Type="nvarchar" MaxLength="15" />
+          <Property Name="TermLength" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrentLocationType" Type="nvarchar" MaxLength="30" />
+          <Property Name="CurrentStatusType" Type="nvarchar" MaxLength="30" />
+          <Property Name="ValidationState" Type="nvarchar" MaxLength="25" />
+          <Property Name="WarehouseNbr" Type="nvarchar" MaxLength="25" />
+          <Property Name="WarehouseSublocation" Type="nvarchar" MaxLength="100" />
+          <Property Name="BinOriginJson" Type="nvarchar(max)" />
+          <Property Name="BinDestinationJson" Type="nvarchar(max)" />
+          <Property Name="BinJson" Type="nvarchar(max)" />
+          <Property Name="ValidationStateJson" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LCI.dbo.PrePackInspection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PrePackInspection">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PreReceivingTagNbr" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PreReceivingTagNbr" Type="int" Nullable="false" />
+          <Property Name="RanchNbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="Block" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReceiptStartDate" Type="datetime" />
+          <Property Name="ReceiptEndDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="RanchBlockJson" Type="nvarchar(max)" />
+          <Property Name="InspectionJson" Type="nvarchar(max)" />
+          <Property Name="EventTimeStamp" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="LCIModelStoreContainer">
+          <EntitySet Name="BinEvent" EntityType="Self.BinEvent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BinEvent].[Id] AS [Id], 
+    [BinEvent].[BinId] AS [BinId], 
+    [BinEvent].[EventType] AS [EventType], 
+    [BinEvent].[EventDateTime] AS [EventDateTime], 
+    [BinEvent].[ValidationState] AS [ValidationState], 
+    [BinEvent].[EventJson] AS [EventJson], 
+    [BinEvent].[ValidationStateJson] AS [ValidationStateJson]
+    FROM [dbo].[BinEvent] AS [BinEvent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BinInventory" EntityType="Self.BinInventory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BinInventory].[Id] AS [Id], 
+    [BinInventory].[BinId] AS [BinId], 
+    [BinInventory].[UnitQty] AS [UnitQty], 
+    [BinInventory].[Uom] AS [Uom], 
+    [BinInventory].[UnitSize] AS [UnitSize], 
+    [BinInventory].[TermLength] AS [TermLength], 
+    [BinInventory].[CurrentLocationType] AS [CurrentLocationType], 
+    [BinInventory].[CurrentStatusType] AS [CurrentStatusType], 
+    [BinInventory].[ValidationState] AS [ValidationState], 
+    [BinInventory].[WarehouseNbr] AS [WarehouseNbr], 
+    [BinInventory].[WarehouseSublocation] AS [WarehouseSublocation], 
+    [BinInventory].[BinOriginJson] AS [BinOriginJson], 
+    [BinInventory].[BinDestinationJson] AS [BinDestinationJson], 
+    [BinInventory].[BinJson] AS [BinJson], 
+    [BinInventory].[ValidationStateJson] AS [ValidationStateJson]
+    FROM [dbo].[BinInventory] AS [BinInventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PrePackInspection" EntityType="Self.PrePackInspection" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PrePackInspection].[Id] AS [Id], 
+    [PrePackInspection].[PreReceivingTagNbr] AS [PreReceivingTagNbr], 
+    [PrePackInspection].[RanchNbr] AS [RanchNbr], 
+    [PrePackInspection].[Block] AS [Block], 
+    [PrePackInspection].[ReceiptStartDate] AS [ReceiptStartDate], 
+    [PrePackInspection].[ReceiptEndDate] AS [ReceiptEndDate], 
+    [PrePackInspection].[Status] AS [Status], 
+    [PrePackInspection].[RanchBlockJson] AS [RanchBlockJson], 
+    [PrePackInspection].[InspectionJson] AS [InspectionJson], 
+    [PrePackInspection].[EventTimeStamp] AS [EventTimeStamp]
+    FROM [dbo].[PrePackInspection] AS [PrePackInspection]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LCIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BinEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BinId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ValidationState" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="EventJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationStateJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BinInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="BinId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BinId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitQty" Type="Int32" />
+          <Property Name="Uom" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="UnitSize" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TermLength" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLocationType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentStatusType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationState" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="WarehouseNbr" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="WarehouseSublocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BinOriginJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BinDestinationJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BinJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationStateJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PrePackInspection">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PreReceivingTagNbr" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PreReceivingTagNbr" Type="Int32" Nullable="false" />
+          <Property Name="RanchNbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Block" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptStartDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiptEndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RanchBlockJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InspectionJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventTimeStamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="LCIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BinEvents" EntityType="Self.BinEvent" />
+          <EntitySet Name="BinInventories" EntityType="Self.BinInventory" />
+          <EntitySet Name="PrePackInspections" EntityType="Self.PrePackInspection" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LCIModelStoreContainer" CdmEntityContainer="LCIEntities">
+          <EntitySetMapping Name="BinEvents">
+            <EntityTypeMapping TypeName="LCIModel.BinEvent">
+              <MappingFragment StoreEntitySet="BinEvent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BinId" ColumnName="BinId" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+                <ScalarProperty Name="ValidationState" ColumnName="ValidationState" />
+                <ScalarProperty Name="EventJson" ColumnName="EventJson" />
+                <ScalarProperty Name="ValidationStateJson" ColumnName="ValidationStateJson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinInventories">
+            <EntityTypeMapping TypeName="LCIModel.BinInventory">
+              <MappingFragment StoreEntitySet="BinInventory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BinId" ColumnName="BinId" />
+                <ScalarProperty Name="UnitQty" ColumnName="UnitQty" />
+                <ScalarProperty Name="Uom" ColumnName="Uom" />
+                <ScalarProperty Name="UnitSize" ColumnName="UnitSize" />
+                <ScalarProperty Name="TermLength" ColumnName="TermLength" />
+                <ScalarProperty Name="CurrentLocationType" ColumnName="CurrentLocationType" />
+                <ScalarProperty Name="CurrentStatusType" ColumnName="CurrentStatusType" />
+                <ScalarProperty Name="ValidationState" ColumnName="ValidationState" />
+                <ScalarProperty Name="WarehouseNbr" ColumnName="WarehouseNbr" />
+                <ScalarProperty Name="WarehouseSublocation" ColumnName="WarehouseSublocation" />
+                <ScalarProperty Name="BinOriginJson" ColumnName="BinOriginJson" />
+                <ScalarProperty Name="BinDestinationJson" ColumnName="BinDestinationJson" />
+                <ScalarProperty Name="BinJson" ColumnName="BinJson" />
+                <ScalarProperty Name="ValidationStateJson" ColumnName="ValidationStateJson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrePackInspections">
+            <EntityTypeMapping TypeName="LCIModel.PrePackInspection">
+              <MappingFragment StoreEntitySet="PrePackInspection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PreReceivingTagNbr" ColumnName="PreReceivingTagNbr" />
+                <ScalarProperty Name="RanchNbr" ColumnName="RanchNbr" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="ReceiptStartDate" ColumnName="ReceiptStartDate" />
+                <ScalarProperty Name="ReceiptEndDate" ColumnName="ReceiptEndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RanchBlockJson" ColumnName="RanchBlockJson" />
+                <ScalarProperty Name="InspectionJson" ColumnName="InspectionJson" />
+                <ScalarProperty Name="EventTimeStamp" ColumnName="EventTimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

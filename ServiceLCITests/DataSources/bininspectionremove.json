@@ -1,0 +1,13 @@
+﻿{
+
+  "EventType": "DeleteEvent",
+
+  "DeletedBy": "unit.test",
+
+  "BinId": "2018100901",
+
+  "Id": "63",
+
+  "EventDate": "2017-06-30T15:21:13"
+
+}

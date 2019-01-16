@@ -1,0 +1,19 @@
+﻿{
+  "IssuanceTagNbr": "999",
+  "EventDate": "2017-07-07T19:01:42",
+  "IssuanceDate": "2017-07-07T19:01:42",
+  "IssuedBy": "unit.test",
+  "GrowerNbr": "0992000",
+  "RanchNbr": "0003000",
+  "Bins": [ "4162653648" ],
+  "Inspection": {
+    "InspectedBy": "unit.test",
+    "BinAirTemp": "31.8",
+    "SubstrateMoisturePct": "34.6",
+    "SubstrateEc": "4.21",
+    "SubstratePh": "6.07",
+    "BotrytisLevel": "1",
+    "BinId": "",
+    "EventDate": "2017-07-07T19:01:42"
+  }
+}
